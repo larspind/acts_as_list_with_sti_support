@@ -55,14 +55,15 @@ module Coroutine                    #:nodoc:
           class_eval do
             
             # Add inheritable accessors
-            write_inheritable_attribute :acts_as_list_column,           column
-            class_inheritable_reader    :acts_as_list_column
-            write_inheritable_attribute :acts_as_list_scope,            scope
-            class_inheritable_reader    :acts_as_list_scope
-            write_inheritable_attribute :acts_as_list_default_scope,    "1 = 1"
-            class_inheritable_reader    :acts_as_list_default_scope
-            write_inheritable_attribute :acts_as_list_scope_condition,  nil
-            class_inheritable_reader    :acts_as_list_scope_condition
+            class_attribute :acts_as_list_column
+            class_attribute :acts_as_list_scope
+            class_attribute :acts_as_list_default_scope
+            class_attribute :acts_as_list_scope_condition
+            
+            self.acts_as_list_column          = column
+            self.acts_as_list_scope           = scope
+            self.acts_as_list_default_scope   = "1 = 1"
+            self.acts_as_list_scope_condition = nil
             
             
             # Add validations (column is allowed to be nil to support soft deletes)
